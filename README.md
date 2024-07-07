@@ -6,6 +6,8 @@ It lists all (potentially):
 - forgotten important Terraform variables
 - forgotten BTP/Cloudfoundry resources
 
+> **IMPORTANT: Please call this script within the provided devcontainer in VS Code!**
+
 Just call the `run` bash script and it will scan all folders with TF scripts that you copy to a folder called `tfscripts`.
 
 The file `scripts/libs/contants/variables.py` contains the configuration.
