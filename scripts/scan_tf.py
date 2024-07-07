@@ -5,18 +5,22 @@ from libs.constants.files_folders import FOLDER_SCRIPTS
 from libs.inspect import get_tf_definitions
 from libs.inspection.provider import TF_Provider
 
+
 # read all folders in the tfscripts folder
-
-
 def get_folders() -> List[Path]:
+    """
+    Get all folders and subfolders in the FOLDER_SCRIPTS folder that contain at least one .tf file.
 
-    # Get all folders and subfolders in the FOLDER_SCRIPTS folder that contain at least one .tf file
+    Returns:
+        List[Path]: A list of Path objects representing the folders that contain .tf files.
+    """
     folders = [folder for folder in FOLDER_SCRIPTS.glob("**/*") if folder.is_dir(
     ) and any([re.match(r".*\.tf", file.name) for file in folder.iterdir()])]
 
     return folders
 
 
+# get all folders
 folders = get_folders()
 
 # iterate through all folders
