@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd scripts
+# all TF scripts need to be in a folder called tfscripts
+python scan_tf.py
