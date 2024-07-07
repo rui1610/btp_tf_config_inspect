@@ -1,0 +1,3 @@
+VARIABLES_MUST_EXIST = ["origin_key"]
+
+RESOURCES_MUST_EXIST = []

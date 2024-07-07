@@ -1,0 +1,53 @@
+
+# Module `mission_3774/step1`
+
+Provider Requirements:
+* **btp (`sap/btp`):** `~> 1.4.0`
+* **local:** (any version)
+* **random:** (any version)
+* **terraform:** (any version)
+
+## Input Variables
+* `cf_landscape_label` (default `""`): In case there are multiple environments available for a subaccount, you can use this label to choose with which one you want to go. If nothing is given, we take by default the first available.
+* `cf_org_admins` (required): List of users to set as Cloudfoundry org administrators.
+* `cf_org_name` (default `"mission-3774-sap-task-center"`): Name of the Cloud Foundry org.
+* `cf_space_developers` (required): Defines the colleagues who are added to a CF space as space developer.
+* `cf_space_managers` (required): Defines the colleagues who are added to a CF space as space manager.
+* `cf_space_name` (default `"dev"`): Name of the Cloud Foundry space.
+* `cli_server_url` (default `"https://cli.btp.cloud.sap"`): Defines the CLI server URL
+* `create_tfvars_file_for_step2` (default `false`): Switch to enable the creation of the tfvars file for step 2.
+* `custom_idp` (default `""`): Defines the custom IdP
+* `globalaccount` (default `"yourglobalaccount"`): Defines the global account
+* `launchpad_admins` (default `["jane.doe@test.com","john.doe@test.com"]`): Defines the colleagues who are added to each subaccount as subaccount service administrators.
+* `origin_key` (default `"sap.ids"`): Defines the origin key of the identity provider
+* `region` (default `"us10"`): The region where the project account shall be created in.
+* `service_plan__build_workzone` (default `"free"`): The plan for build_workzone subscription
+* `subaccount_admins` (default `["jane.doe@test.com","john.doe@test.com"]`): Defines the colleagues who are added to each subaccount as subaccount administrators.
+* `subaccount_id` (default `""`): The subaccount ID.
+* `subaccount_name` (default `"SAP Discovery Center Mission 3774 - Central Inbox with SAP Task Center"`): The subaccount name.
+* `subaccount_service_admins` (default `["jane.doe@test.com","john.doe@test.com"]`): Defines the colleagues who are added to each subaccount as subaccount service administrators.
+
+## Output Values
+* `cf_api_url`: The Cloudfoundry API endpoint.
+* `cf_landscape_label`: The Cloudfoundry landscape label.
+* `cf_org_id`: The Cloudfoundry org id.
+* `cf_org_name`: The Cloudfoundry org name.
+* `subaccount_id`: The ID of the subaccount.
+
+## Managed Resources
+* `btp_subaccount.dc_mission` from `btp`
+* `btp_subaccount_entitlement.build_workzone` from `btp`
+* `btp_subaccount_entitlement.taskcenter` from `btp`
+* `btp_subaccount_environment_instance.cloudfoundry` from `btp`
+* `btp_subaccount_role_collection_assignment.launchpad-admins` from `btp`
+* `btp_subaccount_role_collection_assignment.subaccount-admins` from `btp`
+* `btp_subaccount_role_collection_assignment.subaccount-service-admins` from `btp`
+* `btp_subaccount_subscription.build_workzone` from `btp`
+* `btp_subaccount_trust_configuration.fully_customized` from `btp`
+* `local_file.output_vars_step1` from `local`
+* `random_uuid.uuid` from `random`
+* `terraform_data.replacement` from `terraform`
+
+## Data Resources
+* `data.btp_subaccount_environments.all` from `btp`
+

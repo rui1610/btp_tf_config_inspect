@@ -30,5 +30,10 @@
 	"runArgs": [
 		"--env-file",
 		".devcontainer/devcontainer.env"
-	]
+	],
+	{
+		"postCreateCommand": [
+		  "go install github.com/hashicorp/terraform-config-inspect@latest"
+		]
+	  }
 }
