@@ -1,6 +1,5 @@
 import subprocess
 import json
-import sys
 from pathlib import Path
 
 def get_tf_definitions(folder: Path) -> json:
