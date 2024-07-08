@@ -4,6 +4,7 @@ from typing import List
 from libs.constants.files_folders import FOLDER_SCRIPTS
 from libs.inspect import get_tf_definitions
 from libs.inspection.provider import TF_Provider
+from libs.io.files import write_string_to_file
 
 
 # read all folders in the tfscripts folder
@@ -36,11 +37,13 @@ for folder in folders:
             all_findings.extend(result.findings)
 
     # loop through all findings and print them
-    print("# " + "-" * 80)
-    print(f"Findings in {folder}")
+    message_text = "# " + "-" * 80 + "\n"
+    message_text += f"Findings in {folder}\n"
 
     for finding in all_findings:
         # if the severity is error, print the finding in red
         if finding.severity == "error":
-            print(
-                f"\033[91m - {finding.type} ({finding.provider} provider) '{finding.asset}'\033[0m")
+            message_text += f"\033[91m - {finding.type} ({finding.provider} provider) '{finding.asset}'\033[0m\n"
+            print(message_text)
+            filename = Path(folder, "TF_compliance_TODO.txt")
+            write_string_to_file(string_data=message_text, file_path=folder)
