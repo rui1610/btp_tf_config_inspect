@@ -68,7 +68,7 @@ class TF_Provider(ProviderDefinition):
 
         """
 
-        for resource in self.manadatory_resources:
+        for resource in self.mandatory_resources:
             # check whether the resource is in the tf_definitions["managed_resources"] or in the tf_definitions["managed_resources"] split with a "."
             if resource not in tf_definitions["managed_resources"] and not any([resource in managed_resource.split(".") for managed_resource in tf_definitions["managed_resources"]]):
                 finding = Finding(provider=provider,
